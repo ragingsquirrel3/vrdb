@@ -71,7 +71,6 @@ function mean(a, b) {
     let xAngle = (euler.x * 180 / Math.PI);
     let yAngle = (euler.y * 180 / Math.PI);
     let zAngle = (euler.z * 180 / Math.PI);
-    console.log(`${xAngle} ${yAngle} ${zAngle}`);
     return `${xAngle} ${yAngle} ${zAngle}`;
   }
 
