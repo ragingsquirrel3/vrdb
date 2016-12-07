@@ -1,0 +1,5 @@
+node_modules
+build/*
+!build/tile.png
+*.DS_Store
+*.log
