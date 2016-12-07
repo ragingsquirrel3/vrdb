@@ -5,7 +5,7 @@
   "description": "Boilerplate for Express applications that use React, and more specifically the Material-UI library",
   "repository": {
     "type": "git",
-    "url": "https://github.com/c4wrd/materialui-express-boilerplate"
+    "url": "https://github.com/ragingsquirrel3/vrdb"
   },
   "scripts": {
     "postinstall": "npm run copy",
