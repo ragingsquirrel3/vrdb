@@ -34,7 +34,6 @@ export default function getVizFromData (rawData) {
       `;
     }
     let thisHtml = cylinderHtml;
-    console.log(thisHtml);
     current += thisHtml;
     return current;
   }, getBaseCylinder());
