@@ -69,10 +69,10 @@ function getCameraHtml () {
       <a-cursor id="cursor"
           material="color: white; shader: flat"
           animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
           event-set__1="_event: mouseenter; color: springgreen"
           event-set__2="_event: mouseleave; color: white"
           raycaster="objects: .clickable"
+          fuse='true' fuseTimeout='2000'
       >
       </a-cursor>
     </a-entity>
