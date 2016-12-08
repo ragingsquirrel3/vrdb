@@ -4,7 +4,7 @@ import d3 from 'd3';
 const MAX_COORD = 10;
 const POS_ADJUSTMENT = 1;
 const Z_ADJUSTMENT = -3;
-const MAX_NODES = 1000;
+const MAX_NODES = 750;
 
 export default function processData (raw) {
   let strands = raw.map( d => {
