@@ -32,7 +32,7 @@ export default function draw () {
     let imgHtml = `
       <a-entity position='0 ${y} 0'>
         <a-curvedimage
-          class='menuItem'
+          class='clickable'
           src='#shot${d.id}' height='2.0'
           radius='5.7' theta-length='25'
           rotation='0 ${rotation} 0'
@@ -72,7 +72,7 @@ function getCameraHtml () {
           animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
           event-set__1="_event: mouseenter; color: springgreen"
           event-set__2="_event: mouseleave; color: white"
-          raycaster="objects: .menuItem"
+          raycaster="objects: .clickable"
       >
       </a-cursor>
     </a-entity>

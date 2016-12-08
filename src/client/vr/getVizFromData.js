@@ -23,6 +23,12 @@ export default function getVizFromData (rawData) {
             radius=${RADIUS} height=${distance}
             rotation='90 0 0' color='${COLOR}'
             segments-radial='8'
+            id='seg${d.id}'
+            data-id='${d.id}'
+            highlight
+            sound='on: click; src: #click-sound'
+            update-raycaster="#cursor"
+            class='clickable'
           >
           </a-cylinder>
         </a-entity>

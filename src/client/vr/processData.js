@@ -29,11 +29,12 @@ export default function processData (raw) {
   let scale = d3.scale.linear()
     .domain([min, max])
     .range([-1 * MAX_COORD, MAX_COORD]);
-  let data = mergedPoints.map( d => {
+  let data = mergedPoints.map( (d, i) => {
     return {
       x: scale(d.x) - MAX_COORD / 2,
       y: scale(d.y) - MAX_COORD / 2,
-      z: scale(d.z) + MAX_COORD / 3
+      z: scale(d.z) + MAX_COORD / 3,
+      id: i
     }
   });
   return data.slice(0, MAX_NODES);

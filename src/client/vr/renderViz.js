@@ -5,6 +5,7 @@ const COLOR = '#FFFFFF';
 const RADIUS = 0.025;
 
 const BASE_URL = '/api';
+const HIGH_COLOR = '#EF6F3D';
 
 import getVizFromData from './getVizFromData';
 import writeSceneToDOM from './writeSceneToDOM';
@@ -14,9 +15,17 @@ export default function draw (chromNum, options) {
   // only do this once
   let _render = _.once(render);
   // connect to socket
-  let s = io();
+  let socket = window.socket;
   // join chrom 'room'
-  s.emit('subscribe', chromNum);
+  socket.emit('subscribe', chromNum);
+  // listen for highlighting
+  socket.on('highlight', (d) => {
+    $(`#seg${d}`).dblclick();
+    console.log('someone highlighted ', d);
+    let domId = `seg${d}`;
+    let el  = document.getElementById(domId);
+    if (el) el.setAttribute('color', HIGH_COLOR);
+  });
 
   let url = `${BASE_URL}/${chromNum}`;
   $.ajax({
@@ -56,7 +65,7 @@ function getCameraHtml () {
           animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
           event-set__1="_event: mouseenter; color: springgreen"
           event-set__2="_event: mouseleave; color: white"
-          raycaster="objects: .menuItem"
+          raycaster="objects: .clickable"
       >
       </a-cursor>
     </a-entity>
