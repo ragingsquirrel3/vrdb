@@ -1,7 +1,8 @@
 /*eslint-disable indent, quotes */
 const THREE = window.THREE;
-const COLOR = '#FFFFFF';
+const COLOR = '#4390bc';
 const RADIUS = 0.05;
+const SPHERE_SEGMENTS = 8;
 
 import processData from './processData';
 
@@ -9,34 +10,35 @@ import processData from './processData';
 export default function getVizFromData (rawData) {
   let data = processData(rawData);
   let reducedStr = data.reduce( (current, d, i) => {
+    let spherePos = `${d.x} ${d.y} ${d.z}`;
     let cylinderHtml = '';
     if (i !== 0) {
       let prevD = data[i - 1];
       let distance = calcDistance(d, prevD);
-      let lookPos = `${d.x} ${d.y} ${d.z}`;
-      let r = calcRotation(prevD, d);
       let mid = calcMid(d, prevD);
-      let midPos = `${prevD.x} ${prevD.y} ${prevD.z}`;
+      let midPos = `${mid.x} ${mid.y} ${mid.z}`;
       cylinderHtml = `
-        <a-entity
-          geometry='
-            primitive: cylinder;
-            radius: ${RADIUS};
-            height: ${distance};
-            open-ended: true;
-            segments-radial: 8;
-            buffer: false; skipCache: true; mergeTo: #baseCylinder'
-          position='${midPos}'
-          rotation='${r}'
-          visible='true'
-        >
+        <a-entity position='${midPos}' look-at='${spherePos}'>
+          <a-cylinder
+            radius=${RADIUS} height=${distance}
+            rotation='90 0 0' color='${COLOR}'
+            segments-radial='8'
+          >
+          </a-cylinder>
         </a-entity>
       `;
     }
-    let thisHtml = cylinderHtml;
+    let sphereHtml = `
+      <a-sphere
+        radius=${RADIUS} position='${spherePos}'
+        segments-width='{SPHERE_SEGMENTS}' segments-height='{SPHERE_SEGMENTS}'
+        color=${COLOR} 
+      >
+      </a-sphere>`;
+    let thisHtml = sphereHtml + cylinderHtml;
     current += thisHtml;
     return current;
-  }, getBaseCylinder());
+  }, '');
 
   return reducedStr;
 }
@@ -61,22 +63,4 @@ function calcMid(a, b) {
 
 function mean(a, b) {
   return (a + b) / 2;
-}
-
-  function calcRotation(a, b) {
-    let v1 = new THREE.Vector3(0, 1, 0);
-    let v2 = new THREE.Vector3(b.x - a.x, b.y - a.y, b.z - a.z).normalize();
-    let quaternion = new THREE.Quaternion().setFromUnitVectors(v1, v2);
-    let euler = new THREE.Euler().setFromQuaternion(quaternion);
-    let xAngle = (euler.x * 180 / Math.PI);
-    let yAngle = (euler.y * 180 / Math.PI);
-    let zAngle = (euler.z * 180 / Math.PI);
-    return `${xAngle} ${yAngle} ${zAngle}`;
-  }
-
-
-function getBaseCylinder () {
-  return `
-    '<a-entity id='baseCylinder' geometry='primitive: cylinder; buffer: false; skipCache: true' material='color: ${COLOR}'></a-entity>
-  `;
 }
