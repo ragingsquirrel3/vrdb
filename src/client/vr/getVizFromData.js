@@ -1,8 +1,8 @@
 /*eslint-disable indent, quotes */
 const THREE = window.THREE;
 const COLOR = '#4390bc';
-const RADIUS = 0.05;
-const SPHERE_SEGMENTS = 8;
+const RADIUS = 0.025;
+const SPHERE_SEGMENTS = 6;
 
 import processData from './processData';
 
@@ -35,7 +35,7 @@ export default function getVizFromData (rawData) {
         color=${COLOR} 
       >
       </a-sphere>`;
-    let thisHtml = sphereHtml + cylinderHtml;
+    let thisHtml = cylinderHtml;
     current += thisHtml;
     return current;
   }, '');
