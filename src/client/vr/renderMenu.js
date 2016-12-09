@@ -11,7 +11,7 @@ const Y_DELTA = 2.5;
 // selectCb(id)
 export default function draw () {
   let data = [
-    { id: '1', imgSrc: '/assets/shots/chr_1.png', name: 'chr1' }
+    { id: '1', imgSrc: 'https://s3.amazonaws.com/vrdb/shots/chr_1.png', name: 'chr1' }
   ];
   // make assets HTML
   let assetsStr = data.reduce( (current, d) => {
