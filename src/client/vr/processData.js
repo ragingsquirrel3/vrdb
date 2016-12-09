@@ -20,10 +20,10 @@ export default function processData (raw) {
     });
     return pointArr;
   });
-  let mergedPoints = [].concat.apply([], strandWithPoints);
+  let firstMergedPoints = [].concat.apply([], strandWithPoints);
 
   // sanitize the data to expand and allow the user to 'look around'
-  console.log(mergedPoints.length);
+  let mergedPoints = firstMergedPoints.slice(0, MAX_NODES)
   let min = getMinCoord(_.min(mergedPoints, getMinCoord));
   let max = getMaxCoord(_.max(mergedPoints, getMaxCoord));
   let scale = d3.scale.linear()
@@ -37,7 +37,7 @@ export default function processData (raw) {
       id: i
     }
   });
-  return data.slice(0, MAX_NODES);
+  return data;
 }
 
 
