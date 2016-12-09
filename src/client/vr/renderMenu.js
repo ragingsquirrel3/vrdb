@@ -2,19 +2,26 @@
 const AFRAME = window.AFRAME;
 import writeSceneToDOM from './writeSceneToDOM';
 
-const START_ROTATION = 220;
+const START_ROTATION = 280;
 const START_Y = 2.5;
-const MAX_ROTATION = 120;
-const ROTATION_DELTA = 35;
+const MAX_ROTATION = 90;
+const ROTATION_DELTA = 28;
 const Y_DELTA = 2.5;
+
+const SHOT_BASE = 'https://s3.amazonaws.com/vrdb/shots/chrom_';
 
 // selectCb(id)
 export default function draw () {
-  let data = [
-    { id: '1', imgSrc: 'https://s3.amazonaws.com/vrdb/shots/chr_1.png', name: 'chr1' }
-  ];
+  let chromData = [];
+  for (let i = 1; i <= 23; i++) {
+    chromData.push({
+      id: i,
+      imgSrc: `${SHOT_BASE}${i}.png`,
+      name: `chr${i}`
+    });
+  }
   // make assets HTML
-  let assetsStr = data.reduce( (current, d) => {
+  let assetsStr = chromData.reduce( (current, d) => {
     let thisHtml = `<img id='shot${d.id}' src='${d.imgSrc}' crossorigin='anonymous'>`;
     current += thisHtml;
     return current;
@@ -23,7 +30,7 @@ export default function draw () {
   // make HTML string from data
   let rotation = START_ROTATION;
   let y = START_Y;
-  let menuStr = data.reduce( (current, d) => {
+  let menuStr = chromData.reduce( (current, d) => {
     // src='#shot${d.id}' height='2.0'
     let imgHtml = `
       <a-entity position='0 ${y} 0'>
@@ -68,7 +75,7 @@ function getCameraHtml () {
           event-set__1="_event: mouseenter; color: springgreen"
           event-set__2="_event: mouseleave; color: white"
           raycaster="objects: .clickable"
-          fuse='true' fuseTimeout='2000'
+          fuse='true' fuseTimeout='4000'
       >
       </a-cursor>
     </a-entity>
