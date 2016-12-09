@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <title>VR DB</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://s3.amazonaws.com/vrdb/css/main.css">
+</head>
+<body>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.3.2/aframe.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-look-at-component/master/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    </script>
+    <script src="/socket.io/socket.io.js"></script>
+    <a-scene id="app">
+        <a-assets>
+            <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+            <img id='tile' src='https://s3.amazonaws.com/vrdb/tile.png'>
+            <a-entity id='dynamicAssets'>
+            </a-entity>
+        </a-assets>
+        <a-sky color='#000000'></a-sky>
+        <a-entity id='dynamicTarget'>
+        </a-entity>
+        <a-entity id='cameraTarget'>
+        </a-entity>
+
+    </a-scene>
+    <script>
+        window.IS_VR_CLIENT = true;
+    </script>
+    
+    <script src="https://s3.amazonaws.com/vrdb/app.js"></script>
+</body>
+
+</html>
