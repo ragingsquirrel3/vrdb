@@ -11,7 +11,6 @@ import getVizFromData from './getVizFromData';
 import writeSceneToDOM from './writeSceneToDOM';
 
 export default function draw (chromNum, options) {
-  console.log('viewing ', chromNum);
   // only do this once
   let _render = _.once(render);
   // connect to socket
@@ -21,7 +20,6 @@ export default function draw (chromNum, options) {
   // listen for highlighting
   socket.on('highlight', (d) => {
     $(`#seg${d}`).dblclick();
-    console.log('someone highlighted ', d);
     let domId = `seg${d}`;
     let el  = document.getElementById(domId);
     if (el) el.setAttribute('color', HIGH_COLOR);

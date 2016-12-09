@@ -5,7 +5,7 @@ import writeSceneToDOM from './writeSceneToDOM';
 const START_ROTATION = 280;
 const START_Y = 2.5;
 const MAX_ROTATION = 90;
-const ROTATION_DELTA = 28;
+const ROTATION_DELTA = 32;
 const Y_DELTA = 2.5;
 
 const SHOT_BASE = 'https://s3.amazonaws.com/vrdb/shots/chrom_';
