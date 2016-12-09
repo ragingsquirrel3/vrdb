@@ -11,12 +11,7 @@ const Y_DELTA = 2.5;
 // selectCb(id)
 export default function draw () {
   let data = [
-    { id: '1', imgSrc: '/assets/shot1.png', name: 'chr1' },
-    { id: '2', imgSrc: '/assets/shot2.png', name: 'chr2' },
-    { id: '3', imgSrc: '/assets/shot3.png', name: 'chr3' },
-    { id: '4', imgSrc: '/assets/shot1.png', name: 'chr1' },
-    { id: '5', imgSrc: '/assets/shot2.png', name: 'chr2' },
-    { id: '6', imgSrc: '/assets/shot3.png', name: 'chr3' }
+    { id: '1', imgSrc: '/assets/shots/chr_1.png', name: 'chr1' }
   ];
   // make assets HTML
   let assetsStr = data.reduce( (current, d) => {
@@ -29,6 +24,7 @@ export default function draw () {
   let rotation = START_ROTATION;
   let y = START_Y;
   let menuStr = data.reduce( (current, d) => {
+    // src='#shot${d.id}' height='2.0'
     let imgHtml = `
       <a-entity position='0 ${y} 0'>
         <a-curvedimage
