@@ -2,7 +2,6 @@ import registerComponents from './registerComponents';
 import renderMenu from './renderMenu';
 import renderViz from './renderViz';
 
-
 export default function render () {
   // listen for syncing
   window.socket = io();

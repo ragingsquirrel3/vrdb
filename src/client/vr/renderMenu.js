@@ -15,7 +15,7 @@ export default function draw () {
   ];
   // make assets HTML
   let assetsStr = data.reduce( (current, d) => {
-    let thisHtml = `<img id='shot${d.id}' src='${d.imgSrc}'>`;
+    let thisHtml = `<img id='shot${d.id}' src='${d.imgSrc}' crossorigin='anonymous'>`;
     current += thisHtml;
     return current;
   }, '');
