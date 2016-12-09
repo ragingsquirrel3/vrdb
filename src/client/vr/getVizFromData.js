@@ -2,7 +2,7 @@
 const THREE = window.THREE;
 const COLOR = '#4390bc';
 const RADIUS = 0.025;
-const SPHERE_SEGMENTS = 6;
+const SPHERE_SEGMENTS = 5;
 
 import processData from './processData';
 

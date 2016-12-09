@@ -2,10 +2,10 @@
 const AFRAME = window.AFRAME;
 import writeSceneToDOM from './writeSceneToDOM';
 
-const START_ROTATION = 280;
-const START_Y = 2.5;
-const MAX_ROTATION = 90;
-const ROTATION_DELTA = 32;
+const START_ROTATION = 305;
+const START_Y = 3.5;
+const MAX_ROTATION = 45;
+const ROTATION_DELTA = 40;
 const Y_DELTA = 2.5;
 
 const SHOT_BASE = 'https://s3.amazonaws.com/vrdb/shots/chrom_';
